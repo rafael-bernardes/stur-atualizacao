@@ -30,7 +30,7 @@ public class DadosGeograficosSateliteResource implements Serializable {
 	public Response atualizar() throws IllegalArgumentException, NullPointerException, IOException {
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		
-		WebTarget target = client.target(PropertiesUtil.obterURI("gateway-api")).path("mensageria-satelite");
+		WebTarget target = client.target(PropertiesUtil.obterURI("gateway-api")).path("mensageria-satelite").queryParam("nome-api", "stur-atualizacao-api");
 		
 		Response response = target.request().get();
 		
