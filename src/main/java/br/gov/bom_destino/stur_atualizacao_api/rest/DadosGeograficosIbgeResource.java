@@ -1,4 +1,4 @@
-package br.com.stur.atualizacao.api.rest;
+package br.gov.bom_destino.stur_atualizacao_api.rest;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -15,12 +15,12 @@ import javax.ws.rs.core.Response.Status.Family;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 
-import br.com.stur.atualizacao.api.utils.PropertiesUtil;
+import br.gov.bom_destino.stur_atualizacao_api.utils.PropertiesUtil;
 
-@Path("dados-geograficos-satelite")
+@Path("dados-geograficos-ibge")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class DadosGeograficosSateliteResource implements Serializable {
+public class DadosGeograficosIbgeResource implements Serializable {
 	/**
 	 * 
 	 */
@@ -30,14 +30,14 @@ public class DadosGeograficosSateliteResource implements Serializable {
 	public Response atualizar() throws IllegalArgumentException, NullPointerException, IOException {
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		
-		WebTarget target = client.target(PropertiesUtil.obterURI("gateway-api")).path("mensageria-satelite").queryParam("nome-cliente", "stur-atualizacao-api");
+		WebTarget target = client.target(PropertiesUtil.obterURI("gateway-api")).path("mensageria-ibge").queryParam("nome-cliente", "stur-atualizacao-api");
 		
 		Response response = target.request().get();
 		
-		String resposta = "Dados provenientes do satélite atualizados na base do STUR";
+		String resposta = "Dados provenientes do IBGE atualizados na base do STUR";
 		
 		if(!Family.SUCCESSFUL.equals(response.getStatusInfo().getFamily())) {
-			resposta = "Falha ao consumir mensagem para atualização dos dados provenientes de satélite";
+			resposta = "Falha ao consumir mensagem para atualização dos dados provenientes do IBGE";
 		}
 		
 		return Response.ok().entity(resposta).build();

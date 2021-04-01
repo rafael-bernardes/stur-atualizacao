@@ -1,4 +1,4 @@
-package br.com.stur.atualizacao.api.utils;
+package br.gov.bom_destino.stur_atualizacao_api.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
