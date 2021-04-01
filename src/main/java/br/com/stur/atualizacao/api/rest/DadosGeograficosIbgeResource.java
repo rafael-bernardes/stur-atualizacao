@@ -30,7 +30,7 @@ public class DadosGeograficosIbgeResource implements Serializable {
 	public Response atualizar() throws IllegalArgumentException, NullPointerException, IOException {
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		
-		WebTarget target = client.target(PropertiesUtil.obterURI("gateway-api")).path("mensageria-ibge").queryParam("nome-api", "stur-atualizacao-api");
+		WebTarget target = client.target(PropertiesUtil.obterURI("gateway-api")).path("mensageria-ibge").queryParam("nome-cliente", "stur-atualizacao-api");
 		
 		Response response = target.request().get();
 		
